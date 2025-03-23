@@ -1,1 +1,41 @@
+1. How many employees are in the dataset?
+SELECT COUNT(*) AS Total_Employees FROM HR_Analytics;
+----
+2. What is the average age of employees?
+SELECT AVG(Age) AS Average_Age FROM HR_Analytics;
+---
+3. How many employees have left the company (Attrition = "Yes")?
+SELECT COUNT(*) AS Employees_Left FROM HR_Analytics WHERE Attrition = 'Yes';
+---
+4. What is the total number of employees in each department?
+SELECT Department, COUNT(*) AS Employee_Count 
+FROM HR_Analytics 
+GROUP BY Department;
+---
+5. What is the average monthly income per job role?
+SELECT JobRole, AVG(MonthlyIncome) AS Avg_Monthly_Income 
+FROM HR_Analytics 
+GROUP BY JobRole;
+---
+6. Which job role has the highest attrition rate?
+SELECT JobRole, 
+       COUNT(CASE WHEN Attrition = 'Yes' THEN 1 END) * 100.0 / COUNT(*) AS Attrition_Rate 
+FROM HR_Analytics 
+GROUP BY JobRole 
+ORDER BY Attrition_Rate DESC 
+LIMIT 1;
+----
+7. What is the average number of years employees stay at the company?
+SELECT AVG(YearsAtCompany) AS Avg_Years_At_Company FROM HR_Analytics;
+---
+8. How many employees work remotely (BusinessTravel = "Non-Travel")?
+SELECT COUNT(*) AS Remote_Employees 
+FROM HR_Analytics 
+WHERE BusinessTravel = 'Non-Travel';
+---
+
+
+
+
+
 
